@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>cart</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="angular1.0/angular.js"></script>
+</head>
+<body>
+	<div ng-controller="myCtrl" class="container">
+		<h1>Cart Demo</h1>
+		<hr>
+		<table class="table table-hover">
+		  <thead>
+			  <tr>
+			    <th>Name</th>
+			    <th>Info</th>
+			    <th>Price</th>
+			    <th>Num</th>
+			    <th>Total</th>
+			    <th>Operation</th>
+			  </tr>
+		  </thead>
+		  <tbody>
+			  <tr ng-repeat="fruite in fruites">
+			    <td>{{ fruite.name }}</td>
+			    <td>{{ fruite.info }}</td>
+			    <td>{{ fruite.price }}</td>
+			    <td><button ng-click="fruite.num=fruite.num+1" class="btn">+</button> {{ fruite.num }} <button ng-click="fruite.num=fruite.num-1" ng-disabled="!fruite.num" class="btn">-</button></td>
+			    <td>{{ fruite.price*fruite.num }}</td>
+			    <td>
+			      <button class="btn" ng-click="fruite.num = 0">
+				      <span class="glyphicon glyphicon-pencil"></span> Delete
+			      </button>
+			    </td>
+			  </tr>
+		  </tbody>
+		</table>
+
+		<p>金额合计：{{ totalPrice }} </p>
+
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller('myCtrl', function($scope) {
+			$scope.fruites = [{
+				name: 'apple',
+				info: 'red...',
+				price: 10,
+				num: 1
+			},{
+				name: 'pear',
+				info: 'green...',
+				price: 5,
+				num: 1
+			},{
+				name: 'banana',
+				info: 'yellow...',
+				price: 1,
+				num: 1
+			}];
+			$scope.totalPrice = 0;
+		});
+	</script>
+</body>
+</html>

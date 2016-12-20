@@ -1,0 +1,35 @@
+最终实现的效果
+http://ngcart.snapjay.com/
+https://github.com/snapjay/ngCart
+
+http://demo.componentone.com/Wijmo/Angular/ShoppingCart/ShoppingCart/#/store
+https://code.tutsplus.com/tutorials/create-a-simple-shopping-cart-using-angularjs-part-1--cms-23535
+https://www.google.com/#newwindow=1&q=angularjs+cart
+
+http://www.angularjs4u.com/demos/top-10-angularjs-shopping-carts-demos/
+https://www.codeproject.com/Articles/576246/A-Shopping-Cart-Application-Built-with-AngularJS
+
+
+1.购物车数量加减
+http://www.runoob.com/angularjs/angularjs-html-events.html
+http://www.runoob.com/try/try.php?filename=try_ng_events_click
+
+2.显示/隐藏 HTML 元素
+http://www.runoob.com/angularjs/angularjs-html-events.html
+http://www.runoob.com/try/try.php?filename=try_ng_events_hide
+
+3. angular 的所有指令
+http://www.runoob.com/angularjs/angularjs-reference.html
+
+4. 控制器
+http://www.runoob.com/angularjs/angularjs-controllers.html
+注：控制器也可以有方法，即定义函数，这个时候表达式就是一个函数调用，如： {{ fullname() }}，而在控制器内部 $scope.fullname = function() { return $scpe.first
+Name + $scope.lastName };
+
+5. 模块
+http://www.runoob.com/angularjs/angularjs-modules.html
+var app = angular.module("myApp", []);
+在模块定义中 [] 参数用于定义模块的依赖关系。中括号[]表示该模块没有依赖，如果有依赖的话会在中括号写上依赖的模块名字。
+
+6. reset 效果
+http://www.runoob.com/angularjs/angularjs-forms.html

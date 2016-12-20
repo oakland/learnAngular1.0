@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularTest</title>
+	<script type="text/javascript" src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+
+	<h1>This page is a test for Angular</h1>
+	<p>Version: 1.0;</p>
+
+	<hr>
+	<!-- ng-app = myApp1 -->
+	<!-- <div ng-app="myApp1" ng-controller="myCtrl1">
+		<input type="text" ng-model="firstName">
+		<input type="text" ng-model="lastName">
+		<br>
+		My name is {{ firstName + " " + lastName }} .
+	</div> -->
+
+	<!-- ng-app = myApp2 -->
+	<!-- <ul ng-app="myApp2" ng-controller="myCtrl2">
+		<li ng-repeat="x in names"> {{ x }} </li>
+	</ul> -->
+	
+	<!-- ng-app = myApp3 -->
+	<!-- <div ng-app="myApp3" ng-controller="myCtrl3">
+		<input type="checkbox" ng-model="products[0]" value="products[0]"> {{ products[0] }}
+		<input type="checkbox" ng-model="products[1]" value="products[1]"> {{ products[1] }}
+		<ul>
+			<li ng-repeat="p in products"> {{ p }} </li>
+		</ul>
+	</div> -->
+
+	<!-- ng-app = myApp4 -->
+	<div ng-app="myApp4" ng-controller="myCtrl4">
+		<p>This page url is {{ URL }} </p>
+	</div>
+
+	<script type="text/javascript">
+
+		// ng-app = myApp1
+		// var myApp1 = angular.module('myApp1', []);
+		// myApp1.controller('myCtrl1', function($scope) {
+		// 	$scope.firstName = "John";
+		// 	$scope.lastName = "Doe";
+		// })
+		// ============
+
+		// ng-app = myApp2
+		// var myApp2 = angular.module("myApp2", []);
+		// myApp2.controller("myCtrl2", function($scope) {
+		// 	$scope.names = ['jizq','robot'];
+		// })
+		// ============
+
+		// ng-app = myApp3
+		// var myApp3 = angular.module("myApp3", []);
+		// myApp3.controller("myCtrl3", function($scope) {
+		// 	$scope.products = ["pen","ink"];
+		// })
+		// ============
+
+		// ng-app = myApp4
+		var myApp4 = angular.module("myApp4", []);
+		myApp4.controller("myCtrl4", function($scope, $location) {
+			$scope.URL = $location.absUrl();
+		})
+		// ============
+
+
+
+	</script>
+	<script type="text/javascript">
+		// especially for memory about Angular
+		// ng-app, ng-init, ng-controller, ng-module, ng-model, ng-bind, ng-repeat, app.service, app.filter, 
+		// app.directive('runoobDirective', function() {return {template: "<p>Custome directive</p>"}})
+	</script>
+</body>
+</html>

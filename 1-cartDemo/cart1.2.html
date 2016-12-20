@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>cart</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="angular1.0/angular.js"></script>
+</head>
+<body>
+	<div ng-controller="myCtrl" class="container">
+		<h1 class="text-center text-primary">Cart Demo</h1>
+		<hr>
+		<div class="row">
+			<div class="col-md-2 pull-left">
+				<select class="form-control" ng-model="orderCondition">
+				  <option value="">排序</option>
+				  <option value="price">按价格排序</option>
+				  <option value="name">按名称排序</option>
+				</select>
+			</div>
+			<div class="col-md-3 pull-right">
+				<label for="fruiteName">搜索: </label> <input class="" id="fruiteName" type="text" ng-model="fruiteName" placeholder="输入商品名称...">
+			</div>
+		</div>
+		<div class="row">
+			<table class="table table-hover">
+			  <thead>
+				  <tr>
+				    <th>Name</th>
+				    <th>Info</th>
+				    <th>Price</th>
+				    <th>Num</th>
+				    <th>Total</th>
+				    <th>Operation</th>
+				  </tr>
+			  </thead>
+			  <tbody>
+				  <!-- 这里添加了 ng-show 的指令，会让内容显示为空 -->
+				  <tr ng-repeat="fruite in fruites | filter:fruiteName | orderBy:orderCondition">
+				    <td>{{ fruite.name }}</td>
+				    <td>{{ fruite.info }}</td>
+				    <td>{{ fruite.price }}</td>
+				    <td><button ng-click="fruite.num=fruite.num+1" class="btn">+</button> {{ fruite.num }} <button ng-click="fruite.num=fruite.num-1" ng-disabled="!fruite.num" class="btn">-</button></td>
+				    <td>{{ fruite.price*fruite.num }}</td>
+				    <td>
+				      <button class="btn" ng-click="fruite.num=0">
+					      <span class="glyphicon glyphicon-pencil"></span> Clear
+				      </button>
+				    </td>
+				  </tr>
+			  </tbody>
+			</table>
+
+			<!-- 合计金额为计算所得，所以是一个函数调用 -->
+			<p class="lead bg-primary">合计金额：<strong class="">{{ sumUp() }} 元</strong> ，共选择 <strong> {{ sumItem() }} </strong> 项</p>
+			<hr>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('myApp', []);
+		myApp.controller('myCtrl', function($scope) {
+			$scope.fruites = [{
+				name: 'apple',
+				info: 'red...',
+				price: 10,
+				num: 1
+			},{
+				name: 'pear',
+				info: 'green...',
+				price: 5,
+				num: 1
+			},{
+				name: 'banana',
+				info: 'yellow...',
+				price: 1,
+				num: 1
+			}];
+
+			
+
+			// 合计金额
+			$scope.sumUp = function(){
+			    var total = 0;
+			    for(var i = 0; i < $scope.fruites.length; i++){
+			        var item = $scope.fruites[i];
+			        total += (item.price * item.num);
+			    }
+			    return total;
+			};
+
+			// 合计数量
+			$scope.sumItem = function() {
+				var sumItem = 0;
+				for (var i = 0; i < $scope.fruites.length; i++) {
+					var item = $scope.fruites[i];
+					sumItem += (item.num);
+				}
+				return sumItem;
+			};
+		});
+	</script>
+</body>
+</html>
